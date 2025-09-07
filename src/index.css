@@ -1,0 +1,210 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles for Inter font and smooth transitions */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f0f2f5;
+    transition: background-color 0.3s ease;
+}
+.progress-bar-fill {
+    transition: width 0.5s ease-in-out;
+}
+.card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    background-color: #ffffff;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+.modal-overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+}
+.btn-primary {
+    background-image: linear-gradient(to right, #6366f1, #8b5cf6);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(99, 102, 241, 0.4);
+}
+.btn-secondary {
+    background-color: #e2e8f0;
+    color: #4a5568;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.btn-secondary:hover {
+    background-color: #cbd5e1;
+    transform: translateY(-2px);
+}
+/* Text colors for light mode */
+.text-gray-800 { color: #1f2937; }
+.text-gray-700 { color: #374151; }
+.text-gray-600 { color: #4b5563; }
+.text-indigo-600 { color: #4f46e5; }
+.text-green-600 { color: #16a34a; }
+.text-blue-600 { color: #2563eb; }
+.text-orange-600 { color: #ea580c; }
+.text-purple-600 { color: #7c3aed; }
+.text-red-600 { color: #dc2626; }
+
+/* Navigation Bar */
+nav {
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+nav a {
+    color: #4b5563;
+}
+nav a:hover {
+    color: #4f46e5;
+}
+nav a.border-indigo-600 {
+    border-color: #4f46e5;
+}
+
+/* Footer */
+footer {
+    background-color: #1f2937;
+    color: #f9fafb;
+}
+
+/* Input fields */
+input {
+    background-color: #ffffff;
+    border-color: #d1d5db;
+    color: #1f2937;
+}
+input::placeholder {
+    color: #9ca3af;
+}
+input:focus {
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.5);
+}
+
+/* Custom scrollbar for better aesthetics */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Streak Calendar Specific Styles */
+.streak-calendar-grid {
+    display: grid;
+    grid-template-rows: repeat(7, minmax(0, 1fr)); /* 7 days of the week */
+    grid-auto-flow: column; /* Columns for days */
+    gap: 4px; /* Slightly larger gap between cells */
+    overflow-x: auto; /* Enable horizontal scrolling for 365 days */
+    padding-bottom: 2rem; /* Space for month labels */
+    position: relative;
+    justify-content: start; /* Align cells to start for scroll */
+    padding-top: 5px; /* Space for day labels if needed */
+}
+.streak-cell {
+    width: 1.25rem; /* Slightly larger size for dense grid */
+    height: 1.25rem;
+    border-radius: 3px; /* Slightly rounded corners */
+    background-color: #ebedf0; /* Lightest grey for no activity */
+    position: relative;
+    cursor: default;
+    transition: background-color 0.2s ease;
+}
+/* Different shades of green for activity levels */
+.streak-cell.solved-level-1 { background-color: #9be9a8; } /* Light green */
+.streak-cell.solved-level-2 { background-color: #40c463; } /* Medium green */
+.streak-cell.solved-level-3 { background-color: #30a14e; } /* Darker green */
+.streak-cell.solved-level-4 { background-color: #216e39; } /* Darkest green */
+
+.streak-cell .tooltip {
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease-in-out;
+    z-index: 100;
+    transform: translateX(-50%);
+    left: 50%;
+    bottom: calc(100% + 5px); /* Position above the cell */
+}
+.streak-cell:hover .tooltip {
+    opacity: 1;
+}
+.month-label {
+    position: absolute;
+    bottom: -1.5rem; /* Position below the grid */
+    font-size: 0.75rem;
+    color: #6b7280;
+    text-align: center;
+    white-space: nowrap;
+    transform: translateX(-50%); /* Center the label */
+}
+
+/* Achievement Badges - More prominent, rectangular with icon */
+.achievement-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 8rem; /* Larger width */
+    height: 8rem; /* Larger height */
+    border-radius: 12px; /* Rounded rectangular */
+    padding: 1rem;
+    background-color: #fbd38d; /* Default yellowish */
+    color: #975a16; /* Default text/icon color */
+    font-size: 1.25rem; /* Icon size */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    text-align: center;
+}
+.achievement-badge:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+.achievement-badge .icon {
+    font-size: 2.5rem; /* Larger icon */
+    margin-bottom: 0.5rem;
+}
+.achievement-badge .name {
+    font-weight: 600;
+    font-size: 0.9rem;
+    line-height: 1.2;
+}
+.achievement-badge .tooltip {
+    bottom: unset; /* Override previous tooltip position */
+    top: calc(100% + 5px); /* Position below the badge */
+}
+
+/* Specific styles for solved problems count in cards */
+.solved-count-box {
+    background-color: #edf2f7;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #2d3748;
+    display: inline-block;
+    transition: background-color 0.2s ease;
+}
